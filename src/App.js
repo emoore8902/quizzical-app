@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+
+import './App.css'
+
+import Welcome from './components/Welcome'
+import StartGame from './components/StartGame'
+
+import yellowBlock from './imgs/yellow-block.png'
+import blueBlock from './imgs/blue-block.png'
 
 function App() {
+  const [isGameStarted, setIsGameStarted] = useState(false)
+  const startNewGame = () => {
+    setIsGameStarted(true)
+  }
+  const returnToWelcomePage = () => {
+    setIsGameStarted(false)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={yellowBlock} className="app-yellow-block" />
+      <img src={blueBlock} className="app-blue-block" />
+      <div className="app-content">
+        { isGameStarted ? <StartGame returnToWelcomePage={returnToWelcomePage} /> : <Welcome startNewGame={startNewGame} />  }
+      </div>
+      
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
