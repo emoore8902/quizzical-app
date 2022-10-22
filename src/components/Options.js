@@ -1,17 +1,16 @@
 function Options(props) {
     if (props.checkingTheAnswer) {
         if (props.isSelected && !props.isCorrect) {
-            document.getElementById("opt").classList.add("options-false")
+            document.getElementById(props.optionId).classList.add("options-false")
         }
         if (props.isCorrect) {
-            document.getElementById("opt").classList.add("options-correct")
+            document.getElementById(props.optionId).classList.add("options-true")
         } 
     }
 
     const selectOption = () => {
         if (!props.checkingTheAnswer) {
             props.setSelectOption(props.text)
-            document.getElementById("opt").classList.add("option-selected")
         }
         props.passIfCorrect(props.isCorrect)
         return;
@@ -19,8 +18,8 @@ function Options(props) {
 
     return (
         <div onClick={selectOption}
-            id = "opt"
-            className="options">
+            id = {props.optionId}
+            className={props.isSelected ? "option-selected" : "options"}>
             {props.text}
         </div>
     )

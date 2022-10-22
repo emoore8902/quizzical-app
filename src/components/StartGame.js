@@ -1,4 +1,4 @@
-import { useState, useEffect, memo } from 'react'
+import { useState, useEffect } from 'react'
 import { nanoid } from 'nanoid'
 
 import Question from './/Question'
@@ -15,16 +15,15 @@ function StartGame(props) {
         setCheckingTheAnswer(false)
         props.returnToWelcomePage();
     }
-
     const [score, setScore] = useState(0)
-    const checkIfScore = (isCorrect) => {
-        if (isCorrect && score < 5) {
-            setScore(prevScore => prevScore + 1)
-        }
-        if (!isCorrect && score > 0) {
-            setScore(prevScore => prevScore - 1)
-        }
-    }
+    // const checkIfScore = (isCorrect) => {
+    //     if (isCorrect && score < 5) {
+    //         setScore(prevScore => prevScore + 1)
+    //     }
+    //     if (!isCorrect && score > 0) {
+    //         setScore(prevScore => prevScore - 1)
+    //     }
+    // }
 
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5')
@@ -48,7 +47,9 @@ function StartGame(props) {
             title={question.question}
             options={question.options}
             checkingTheAnswer={checkingTheAnswer}
-            checkIfScore={checkIfScore} />
+            //checkIfScore={checkIfScore}
+            score = {score}
+            setScore = {setScore} />
     });
 
     function NewGameButton() {

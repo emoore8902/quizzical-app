@@ -154,6 +154,10 @@ body {
 }
 
 .option-selected {
+    margin-right: 0.75rem;
+    margin-bottom: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.75rem;
     border: none;
     background-color: #D6DBF5;
 }
@@ -175,14 +179,8 @@ body {
     margin-bottom: 1rem;
     padding: 0.25rem 0.5rem;
     border-radius: 0.75rem;
-    border-color: #4D5B9E;
-    color: #293264;
-    cursor: pointer;
-    transition-timing-function: linear;
-    transition-duration: 500ms;
     border: none;
     background-color: #94D7A2;
-    color: #293264;
 }
 
 .options-false {
@@ -190,11 +188,6 @@ body {
     margin-bottom: 1rem;
     padding: 0.25rem 0.5rem;
     border-radius: 0.75rem;
-    border-color: #4D5B9E;
-    color: #293264;
-    cursor: pointer;
-    transition-timing-function: linear;
-    transition-duration: 500ms;
     border: none;
     background-color: #F8BCBC;
 }
