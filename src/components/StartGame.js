@@ -15,15 +15,11 @@ function StartGame(props) {
         setCheckingTheAnswer(false)
         props.returnToWelcomePage();
     }
-    const [score, setScore] = useState(0)
-    // const checkIfScore = (isCorrect) => {
-    //     if (isCorrect && score < 5) {
-    //         setScore(prevScore => prevScore + 1)
-    //     }
-    //     if (!isCorrect && score > 0) {
-    //         setScore(prevScore => prevScore - 1)
-    //     }
-    // }
+    let score = 0;
+
+    const addScore = () => {
+        score++
+    }
 
     useEffect(() => {
         fetch('https://opentdb.com/api.php?amount=5')
@@ -47,9 +43,7 @@ function StartGame(props) {
             title={question.question}
             options={question.options}
             checkingTheAnswer={checkingTheAnswer}
-            //checkIfScore={checkIfScore}
-            score = {score}
-            setScore = {setScore} />
+            addScore = {addScore} />
     });
 
     function NewGameButton() {

@@ -1,25 +1,29 @@
-function Options(props) {
-    if (props.checkingTheAnswer) {
-        if (props.isSelected && !props.isCorrect) {
+function Options({isSelected, isCorrect, addScore, checkingTheAnswer, ...props}) {
+    
+    
+    if (checkingTheAnswer) {
+        if (isSelected && !isCorrect) {
             document.getElementById(props.optionId).classList.add("options-false")
         }
-        if (props.isCorrect) {
+        if (isCorrect) {
             document.getElementById(props.optionId).classList.add("options-true")
+        } 
+        if (isSelected && isCorrect) {
+            addScore()
         } 
     }
 
     const selectOption = () => {
-        if (!props.checkingTheAnswer) {
+        if (!checkingTheAnswer) {
             props.setSelectOption(props.text)
         }
-        props.passIfCorrect(props.isCorrect)
         return;
     }
 
     return (
         <div onClick={selectOption}
             id = {props.optionId}
-            className={props.isSelected ? "option-selected" : "options"}>
+            className={isSelected ? "option-selected" : "options"}>
             {props.text}
         </div>
     )
